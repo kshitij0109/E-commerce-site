@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}
+All Items
+
+{% endblock %}
+{% block content %}
+
+<h1 class="text-center mt-4">All Products</h1>
+<a class="btn btn-primary" href="{% url 'sell' %}"> Upload your product </a>
+
+<div class="container row gap-3 mt-4">
+
+{% for tweet in products %}
+<div class="card mx-2" style="width: 14rem;">
+    <img src="{{tweet.photo1.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{tweet.Product_name}}</h5>
+      <p class="card-text">{{tweet.price}}</p>
+      
+     <a class="btn btn-light" href="{% url 'item_detail' pk=tweet.id %}"> view more </a>̀
+      
+    </div>
+  </div>
+
+
+{% endfor %}
+
+</div>
+
+{% endblock %} 

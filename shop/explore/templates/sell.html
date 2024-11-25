@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+Product sell
+{% endblock %}
+{% block content %}
+
+<h1>Upload your product here</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+    </form>
+
+    {% endblock %} 

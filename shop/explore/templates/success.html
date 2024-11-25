@@ -1,0 +1,23 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+Buying success 
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="text-success">Purchase Successful!</h1>
+    <p>Thank you for your purchase!</p>
+
+    <div class="receipt">
+        <h2>Your Receipt</h2>
+        <img src="{{ product.photo1.url }}" alt="{{ product.Product_name }}" style="width: 200px; height: auto;">
+        <p><strong>Product Name:</strong> {{ product.Product_name }}</p>
+        <p><strong>Quantity:</strong> {{ quantity }}</p>
+        <p><strong>Total Payable Amount:</strong> ${{ total_price }}</p>
+    </div>
+
+    <a class="btn btn-primary" href="{% url 'all_items' %}">Go back to shopping</a>
+</div>
+{% endblock %}

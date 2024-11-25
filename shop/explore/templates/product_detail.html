@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+{% block title %}
+Product buy
+{% endblock %}
+
+{% block styling %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .product-detail-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #333; /* Changed background to dark */
+        border-radius: 10px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        color: white; /* Changed text color to white */
+    }
+
+    .product-detail-container:hover {
+        transform: translateY(-5px);
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #ffffff; /* White title */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-description {
+        margin: 20px 0;
+        font-size: 1.1em;
+        color: #dddddd; /* Light gray for description */
+        line-height: 1.6;
+    }
+
+    .product-price {
+        font-size: 1.8em;
+        color: #28a745; /* Green price */
+        font-weight: bold;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .product-sold-count {
+        font-size: 1em;
+        color: #cccccc; /* Lighter gray for sold count */
+        text-align: center;
+    }
+
+    .buy-now-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .buy-now-button {
+        background-color: white; /* White background for button */
+        color: #333; /* Dark text for button */
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .buy-now-button:hover {
+        background-color: #f1f1f1; /* Light gray on hover */
+        transform: scale(1.05);
+    }
+
+    .buy-now-button:focus {
+        outline: none;
+    }
+
+    @media (max-width: 768px) {
+        .product-detail-container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .buy-now-button {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="product-detail-container">
+    <h1>{{ product.Product_name }}</h1>
+    <img class="product-image" src="{{ product.photo1.url }}" alt="{{ product.Product_name }}">
+    <p class="product-description">Description: {{ product.description }}</p>
+    <p class="product-price">Price: ${{ product.price }}</p>
+    <p class="product-sold-count">Sold Count: {{ product.sold_count }}</p>
+    
+    <div class="buy-now-container">
+        <h2>Buy This Product</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="buy-now-button" type="submit">Buy Now</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
